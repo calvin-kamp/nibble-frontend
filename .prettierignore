@@ -6,6 +6,9 @@ dist
 dist-ssr
 *.local
 
+# shadcn-vue components (auto-generated)
+src/components/ui/**
+
 # env files
 .env
 .env.*

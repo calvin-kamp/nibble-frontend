@@ -10,6 +10,7 @@ import {
   useForwardPropsEmits,
 } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import { focusHighlight } from '@/lib/interactive-styles'
 
 const props = defineProps<DropdownMenuRadioItemProps & { class?: HTMLAttributes['class'] }>()
 
@@ -25,7 +26,10 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     data-slot="dropdown-menu-radio-item"
     v-bind="forwarded"
     :class="cn(
-      'focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground gap-2.5 rounded-xl py-2 pr-8 pl-3 text-sm data-inset:pl-9.5 [&_svg:not([class*=size-])]:size-4 relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',
+      focusHighlight,
+      'focus:**:text-accent-foreground relative flex min-h-11 cursor-default items-center gap-2.5 rounded-xl py-2 pr-8 pl-3 text-sm select-none',
+      'data-inset:pl-9.5 data-disabled:pointer-events-none data-disabled:opacity-50',
+      '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4',
       props.class,
     )"
   >

@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { cn } from '@/lib/utils'
+import { focusRing, invalidRing, transitionInteractive } from '@/lib/interactive-styles';
 
 const props = defineProps<{
   defaultValue?: string | number
@@ -24,7 +25,11 @@ const modelValue = useVModel(props, 'modelValue', emits, {
     v-model="modelValue"
     data-slot="input"
     :class="cn(
-      'bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-9 rounded-4xl border px-3 py-1 text-base transition-colors file:h-7 file:text-sm file:font-medium focus-visible:ring-3 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50',
+      focusRing,
+      invalidRing,
+      transitionInteractive,
+      'w-full h-11 min-w-0 px-3 py-1 bg-input/30 border border-input  rounded-lg text-base placeholder:text-muted-foreground',
+      'disabled:cursor-not-allowed disabled:opacity-50',
       props.class,
     )"
   >

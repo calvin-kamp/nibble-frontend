@@ -11,6 +11,7 @@ import {
   useForwardProps,
 } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import { focusHighlight } from '@/lib/interactive-styles'
 
 const props = defineProps<SelectItemProps & { class?: HTMLAttributes['class'] }>()
 
@@ -25,7 +26,9 @@ const forwardedProps = useForwardProps(delegatedProps)
     v-bind="forwardedProps"
     :class="
       cn(
-        'focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground gap-2.5 rounded-xl py-2 pr-8 pl-3 text-sm [&_svg:not([class*=size-])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2 relative flex w-full cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',
+        focusHighlight,
+        'relative flex items-center gap-2 w-full h-11',
+        'not-data-[variant=destructive]:focus:**:text-accent-foreground rounded-lg py-2 pr-8 pl-3 text-sm [&_svg:not([class*=size-])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2 cursor-default outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',
         props.class,
       )
     "

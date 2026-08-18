@@ -18,9 +18,9 @@ const props = withDefaults(defineProps<{
     :class="cn('flex flex-col-reverse gap-2 sm:flex-row sm:justify-end', props.class)"
   >
     <slot />
-    <DialogClose v-if="showCloseButton" as-child>
+    <DialogClose v-if="showCloseButton" :as-child="true">
       <Button variant="outline">
-        Close
+        Schließen
       </Button>
     </DialogClose>
   </div>

@@ -26,7 +26,7 @@ const forwardedProps = useForwardProps(delegatedProps)
       focusRing,
       invalidRing,
       transitionInteractive,
-      'flex items-center justify-between w-fit h-11 px-3 py-2',
+      'flex flex-1 items-center justify-between w-fit h-11 px-3 py-2',
       'border-input bg-input/30 gap-2 rounded-lg border text-sm whitespace-nowrap',
       'data-placeholder:text-muted-foreground',
       '*:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 *:data-[slot=select-value]:line-clamp-1',

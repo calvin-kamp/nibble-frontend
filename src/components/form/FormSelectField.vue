@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<Props>(), {
   srOnlyDescription: false,
 })
 
-const fieldId = useId()
+const fieldId: string = useId()
 const descriptionId: string = `${fieldId}-description`
 const errorId: string = `${fieldId}-error`
 

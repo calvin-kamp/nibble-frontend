@@ -25,7 +25,8 @@ const forwardedProps = useForwardProps(delegatedProps)
       cn(
         buttonVariants({ variant: 'outline' }),
         'w-full',
-        'data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground data-checked:font-semibold data-checked:hover:bg-primary/80',
+        'data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground data-checked:font-semibold',
+        'data-checked:hover:bg-primary data-checked:hover:text-primary-foreground',
         'group-aria-invalid/choice-group:border-destructive',
         props.class,
       )

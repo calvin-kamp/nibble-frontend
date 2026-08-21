@@ -7,7 +7,6 @@ import { focusRingOffset, transitionInteractive } from '@/lib/interactive-styles
 
 const props = withDefaults(defineProps<{
   class?: HTMLAttributes['class']
-  /** Zugänglicher Name des Buttons. */
   label?: string
 }>(), {
   label: 'Wert erhöhen',

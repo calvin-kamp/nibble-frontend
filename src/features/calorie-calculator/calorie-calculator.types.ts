@@ -47,3 +47,9 @@ export interface CalorieResult {
   safetyAdjustment: number
   macros: Macro[]
 }
+
+export interface MacroChartEntry {
+  key: string
+  label: string
+  color: string
+}

@@ -12,6 +12,7 @@ import {
 } from 'reka-ui'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import LucideIcon from '@/components/shared/LucideIcon.vue'
 import DialogOverlay from './DialogOverlay.vue'
 
 defineOptions({
@@ -44,7 +45,8 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
         :as-child="true"
       >
         <Button variant="ghost" size="icon" class="absolute top-3 right-3">
-          <XIcon />
+          <LucideIcon :icon="XIcon" />
+
           <span class="sr-only">Schließen</span>
         </Button>
       </DialogClose>

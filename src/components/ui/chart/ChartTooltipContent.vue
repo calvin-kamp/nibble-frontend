@@ -49,7 +49,7 @@ const tooltipLabel = computed(() => {
 <template>
   <div
     :class="cn(
-      'border-border/50 bg-background gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs shadow-xl grid min-w-32 items-start',
+      'bg-popover text-popover-foreground ring-foreground/5 grid min-w-32 items-start gap-1.5 rounded-lg px-2.5 py-1.5 text-xs shadow-lg ring-1',
       props.class,
     )"
   >
@@ -94,7 +94,7 @@ const tooltipLabel = computed(() => {
                 {{ itemConfig?.label || value }}
               </span>
             </div>
-            <span v-if="value" class="text-foreground font-mono font-medium tabular-nums">
+            <span v-if="value" class="text-foreground font-medium tabular-nums">
               {{ value.toLocaleString() }}
             </span>
           </div>

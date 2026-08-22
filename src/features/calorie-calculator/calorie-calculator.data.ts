@@ -1,4 +1,5 @@
 import type { Option, OptionGroup } from '@/types/form.types'
+import type { MacroChartEntry } from './calorie-calculator.types'
 
 export const exercises: OptionGroup[] = [
   {
@@ -199,3 +200,21 @@ export const goals: Option[] = [
     description: '10 % über deinem Erhaltungsbedarf',
   },
 ]
+
+export const macroChart: Record<string, MacroChartEntry | undefined> = {
+  Kohlenhydrate: {
+    key: 'carbs',
+    label: 'Kohlenhydrate',
+    color: 'var(--chart-2)',
+  },
+  Fett: {
+    key: 'fat',
+    label: 'Fett',
+    color: 'var(--chart-3)',
+  },
+  Protein: {
+    key: 'protein',
+    label: 'Protein',
+    color: 'var(--chart-1)',
+  },
+}

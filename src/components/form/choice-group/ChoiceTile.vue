@@ -34,7 +34,7 @@ const forwardedProps = useForwardProps(delegatedProps)
       cn(
         focusRingOffset,
         transitionInteractive,
-        'group/choice-tile border-border bg-input/30 flex w-full flex-col items-start gap-1 rounded-xl border p-4 text-left select-none',
+        'group/choice-tile border-border bg-input/30 flex w-full flex-col items-center gap-1 rounded-xl border p-4 select-none',
         'hover:not-data-checked:bg-input/50',
         'data-checked:border-primary data-checked:bg-primary/8 data-checked:ring-primary data-checked:ring-1 data-checked:ring-inset',
         'group-aria-invalid/choice-group:border-destructive group-aria-invalid/choice-group:ring-0',
@@ -45,7 +45,7 @@ const forwardedProps = useForwardProps(delegatedProps)
   >
     <span
       :id="titleId"
-      class="text-sm leading-snug font-medium group-data-checked/choice-tile:font-bold"
+      class="leading-snug font-medium group-data-checked/choice-tile:font-bold"
     >
       {{ props.label }}
     </span>
@@ -53,7 +53,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     <span
       v-if="props.description"
       :id="descriptionId"
-      class="text-muted-foreground text-[0.8125rem] leading-normal font-normal"
+      class="text-muted-foreground text-sm leading-normal font-normal"
     >
       {{ props.description }}
     </span>

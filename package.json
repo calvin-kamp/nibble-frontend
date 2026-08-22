@@ -32,7 +32,7 @@
     "vee-validate": "^4.15.1",
     "vue": "^3.5.40",
     "vue-router": "^5.2.0",
-    "zod": "^4.4.3"
+    "zod": "^3.24.0"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",
@@ -44,6 +44,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-oxlint": "~1.73.0",
     "eslint-plugin-vue": "~10.9.2",
+    "eslint-plugin-vuejs-accessibility": "^2.6.0",
     "jiti": "^2.7.0",
     "npm-run-all2": "^9.0.2",
     "oxlint": "~1.73.0",

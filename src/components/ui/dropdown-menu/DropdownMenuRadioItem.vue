@@ -10,6 +10,7 @@ import {
   useForwardPropsEmits,
 } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import LucideIcon from '@/components/shared/LucideIcon.vue'
 import { focusHighlight } from '@/lib/interactive-styles'
 
 const props = defineProps<DropdownMenuRadioItemProps & { class?: HTMLAttributes['class'] }>()
@@ -39,7 +40,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     >
       <DropdownMenuItemIndicator>
         <slot name="indicator-icon">
-          <CheckIcon />
+          <LucideIcon :icon="CheckIcon" />
         </slot>
       </DropdownMenuItemIndicator>
     </span>

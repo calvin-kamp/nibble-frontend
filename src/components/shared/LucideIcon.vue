@@ -10,6 +10,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   size: 16,
+  class: undefined,
 })
 </script>
 
@@ -18,5 +19,6 @@ const props = withDefaults(defineProps<Props>(), {
     :is="props.icon"
     :size="props.size"
     :class="props.class"
+    aria-hidden="true"
   />
 </template>

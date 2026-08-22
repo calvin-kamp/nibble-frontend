@@ -6,6 +6,7 @@ import { ChevronUpIcon } from '@lucide/vue'
 import { reactiveOmit } from '@vueuse/core'
 import { SelectScrollUpButton, useForwardProps } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import LucideIcon from '@/components/shared/LucideIcon.vue'
 
 const props = defineProps<SelectScrollUpButtonProps & { class?: HTMLAttributes['class'] }>()
 
@@ -21,7 +22,7 @@ const forwardedProps = useForwardProps(delegatedProps)
     :class="cn('bg-popover z-10 flex cursor-default items-center justify-center py-1 [&_svg:not([class*=size-])]:size-4', props.class)"
   >
     <slot>
-      <ChevronUpIcon />
+      <LucideIcon :icon="ChevronUpIcon" />
     </slot>
   </SelectScrollUpButton>
 </template>

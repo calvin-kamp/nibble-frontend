@@ -11,6 +11,7 @@ import {
   useForwardProps,
 } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import LucideIcon from '@/components/shared/LucideIcon.vue'
 import { focusHighlight } from '@/lib/interactive-styles'
 
 const props = defineProps<SelectItemProps & { class?: HTMLAttributes['class'] }>()
@@ -36,7 +37,10 @@ const forwardedProps = useForwardProps(delegatedProps)
     <span class="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
       <SelectItemIndicator>
         <slot name="indicator-icon">
-          <CheckIcon class="pointer-events-none" />
+          <LucideIcon
+            :icon="CheckIcon"
+            class="pointer-events-none"
+          />
         </slot>
       </SelectItemIndicator>
     </span>

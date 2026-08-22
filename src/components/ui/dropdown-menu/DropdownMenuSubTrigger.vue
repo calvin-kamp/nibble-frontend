@@ -9,6 +9,7 @@ import {
   useForwardProps,
 } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import LucideIcon from '@/components/shared/LucideIcon.vue'
 
 const props = defineProps<DropdownMenuSubTriggerProps & { class?: HTMLAttributes['class'], inset?: boolean }>()
 
@@ -27,6 +28,9 @@ const forwardedProps = useForwardProps(delegatedProps)
     )"
   >
     <slot />
-    <ChevronRightIcon class="cn-rtl-flip ml-auto" />
+    <LucideIcon
+      :icon="ChevronRightIcon"
+      class="ml-auto"
+    />
   </DropdownMenuSubTrigger>
 </template>

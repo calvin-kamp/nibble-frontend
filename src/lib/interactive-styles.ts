@@ -20,14 +20,15 @@ export const focusRingDestructive =
 
 /**
  * Focus ring for wrappers whose inner control holds the focus
- * (InputGroup). The wrapper shows the ring as soon as the control
- * marked `data-slot="input-group-control"` is focused — the control
- * itself gives up its own ring via `focusRingReset`. Addon buttons
+ * (InputGroup, NumberFieldContent). The wrapper shows the ring as soon
+ * as the control marked `data-slot="input-group-control"` or
+ * `data-slot="number-field-input"` is focused — the control itself
+ * gives up its own ring via `focusRingReset`. Addon and stepper buttons
  * inside the wrapper deliberately do not trigger the group ring;
  * they have their own.
  */
 export const focusRingWithin =
-  'outline-hidden has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot=input-group-control]:focus-visible]:ring-3'
+  'outline-hidden has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=number-field-input]:focus-visible]:border-ring has-[[data-slot=number-field-input]:focus-visible]:ring-ring/50 has-[[data-slot=number-field-input]:focus-visible]:ring-3'
 
 /**
  * Removes focus and error ring from embedded controls whose wrapper
@@ -66,3 +67,21 @@ export const focusHighlight = 'outline-hidden focus:bg-accent focus:text-accent-
  */
 export const transitionInteractive =
   'transition-[color,background-color,border-color,box-shadow,outline-color,opacity,transform] duration-200 ease-out'
+
+/**
+ * Offset focus ring for card-shaped controls whose inner control holds
+ * the focus (FormRadioField variant `card`, card checkbox). The card
+ * shows the ring as soon as the control inside is focused — the control
+ * itself gives up its own ring via `focusRingResetOffset`. Rationale:
+ * the whole card is the hit area, so a ring around the 16 px circle in
+ * the corner would be hard to locate during keyboard navigation.
+ */
+export const focusRingCard =
+  'outline-hidden has-[[data-slot=radio-group-item]:focus-visible]:border-ring has-[[data-slot=radio-group-item]:focus-visible]:ring-ring/50 has-[[data-slot=radio-group-item]:focus-visible]:ring-3 has-[[data-slot=radio-group-item]:focus-visible]:ring-offset-2 has-[[data-slot=radio-group-item]:focus-visible]:ring-offset-background has-[[data-slot=checkbox]:focus-visible]:border-ring has-[[data-slot=checkbox]:focus-visible]:ring-ring/50 has-[[data-slot=checkbox]:focus-visible]:ring-3 has-[[data-slot=checkbox]:focus-visible]:ring-offset-2 has-[[data-slot=checkbox]:focus-visible]:ring-offset-background'
+
+/**
+ * Counterpart to `focusRingCard`: removes ring and offset from the
+ * control sitting inside a card that already shows the focus state.
+ */
+export const focusRingResetOffset =
+  'focus-visible:ring-0 focus-visible:ring-offset-0 aria-invalid:ring-0'

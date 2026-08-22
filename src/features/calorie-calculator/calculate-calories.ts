@@ -43,9 +43,15 @@ function metFromValue(value: string): number | null {
  * The goal factor is relative rather than a fixed offset: 500 kcal is a third of a 1500 kcal
  * budget and a sixth of a 3000 kcal one.
  *
- * Two floors then apply — never below the basal rate, never below the absolute intake
- * minimum. Whenever one binds, `safetyAdjustment` is non-zero and the UI has to explain it;
- * otherwise the target stops responding to input for no visible reason.
+ * One floor then applies: the absolute intake minimum. Whenever it binds,
+ * `safetyAdjustment` is non-zero and the UI has to explain it; otherwise the target stops
+ * responding to input for no visible reason.
+ *
+ * There is deliberately no second floor at the basal rate. Without activity, maintenance is
+ * the basal rate divided by 0.9, so a diet target lands at 0.944 of the basal rate by
+ * construction — such a floor would bind for every sedentary user and make weight loss
+ * unreachable. What matters is absolute intake and the size of the deficit, not the ratio to
+ * resting expenditure.
  *
  * Incomplete workouts are skipped, not rejected. Training is optional, so a started but
  * unfinished entry must neither contribute nor fail.
@@ -73,11 +79,7 @@ export function calculateCalories(values: CalorieCalculatorValues): CalorieResul
 
   const rawTargetCalories: number = maintenanceCalories * GOAL_FACTOR[values.goal]
 
-  const targetCalories: number = Math.max(
-    rawTargetCalories,
-    basalMetabolicRate,
-    MIN_INTAKE[values.sex],
-  )
+  const targetCalories: number = Math.max(rawTargetCalories, MIN_INTAKE[values.sex])
 
   const safetyAdjustment: number = targetCalories - rawTargetCalories
 

@@ -3,6 +3,7 @@ import type { HTMLAttributes } from 'vue'
 import { PlusIcon } from '@lucide/vue'
 import { NumberFieldIncrement } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import LucideIcon from '@/components/shared/LucideIcon.vue'
 import { focusRingOffset, transitionInteractive } from '@/lib/interactive-styles'
 
 const props = withDefaults(defineProps<{
@@ -28,9 +29,8 @@ const props = withDefaults(defineProps<{
     )"
   >
     <slot>
-      <PlusIcon
-        class="size-4"
-        aria-hidden="true"
+      <LucideIcon
+        :icon="PlusIcon"
       />
     </slot>
   </NumberFieldIncrement>

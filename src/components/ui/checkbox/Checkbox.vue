@@ -6,6 +6,7 @@ import { CheckIcon } from '@lucide/vue'
 import { reactiveOmit } from '@vueuse/core'
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import LucideIcon from '@/components/shared/LucideIcon.vue'
 import { focusRingOffset, invalidRing, transitionInteractive } from '@/lib/interactive-styles'
 
 const props = defineProps<CheckboxRootProps & { class?: HTMLAttributes['class'] }>()
@@ -37,7 +38,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
       class="[&>svg]:size-3.5 grid place-content-center text-current transition-none"
     >
       <slot v-bind="slotProps">
-        <CheckIcon />
+        <LucideIcon :icon="CheckIcon" />
       </slot>
     </CheckboxIndicator>
   </CheckboxRoot>

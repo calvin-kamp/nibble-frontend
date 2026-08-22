@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { useId } from 'vue'
-
 import { Field as VeeField } from 'vee-validate'
+import { computed, useId, useSlots } from 'vue'
 import { Field, FieldDescription, FieldError, FieldLabel } from '../ui/field'
 import {
   Select as SelectRoot,
@@ -19,27 +18,33 @@ interface Props {
   label: string
   options: Option[] | OptionGroup[]
   placeholder: string
-  required?: boolean
-  disabled?: boolean
+  srOnlyLabel?: boolean
   description?: string
   srOnlyDescription?: boolean
+  required?: boolean
+  disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  required: false,
-  disabled: false,
+  srOnlyLabel: false,
   description: undefined,
   srOnlyDescription: false,
+  required: false,
+  disabled: false,
 })
+
+const slots = useSlots()
 
 const fieldId: string = useId()
 const descriptionId: string = `${fieldId}-description`
 const errorId: string = `${fieldId}-error`
 
-function describedBy(invalid: boolean) {
+const hasDescription = computed<boolean>(() => Boolean(props.description || slots.description))
+
+function describedBy(invalid: boolean): string | undefined {
   const ids: string[] = []
 
-  if (props.description) ids.push(descriptionId)
+  if (hasDescription.value) ids.push(descriptionId)
   if (invalid) ids.push(errorId)
 
   return ids.join(' ') || undefined
@@ -55,28 +60,35 @@ function isOptionGroup(option: Option | OptionGroup): option is OptionGroup {
     v-slot="{ componentField, errors }"
     :name="props.fieldName"
   >
-    <Field :data-invalid="!!errors.length">
+    <Field :data-invalid="errors.length > 0">
       <FieldLabel
         :for="fieldId"
         :required-mark="props.required"
+        :class="{ 'sr-only': props.srOnlyLabel }"
       >
         {{ props.label }}
       </FieldLabel>
 
-      <SelectRoot v-bind="componentField">
-        <div class="flex items-center gap-2">
-          <SelectTrigger
-            :id="fieldId"
-            :disabled="props.disabled"
-            :aria-invalid="!!errors.length"
-            :aria-required="props.required"
-            :aria-describedby="describedBy(errors.length > 0)"
-          >
-            <SelectValue :placeholder="props.placeholder" />
-          </SelectTrigger>
+      <FieldDescription
+        v-if="hasDescription"
+        :id="descriptionId"
+        :class="{ 'sr-only': props.srOnlyDescription }"
+      >
+        <slot name="description">
+          {{ props.description }}
+        </slot>
+      </FieldDescription>
 
-          <slot name="action" />
-        </div>
+      <SelectRoot v-bind="componentField">
+        <SelectTrigger
+          :id="fieldId"
+          :disabled="props.disabled"
+          :aria-invalid="errors.length > 0"
+          :aria-required="props.required"
+          :aria-describedby="describedBy(errors.length > 0)"
+        >
+          <SelectValue :placeholder="props.placeholder" />
+        </SelectTrigger>
 
         <SelectContent>
           <template
@@ -89,17 +101,19 @@ function isOptionGroup(option: Option | OptionGroup): option is OptionGroup {
               </SelectLabel>
 
               <SelectItem
-                v-for="opt in option.options"
-                :key="opt.value"
-                :value="opt.value"
+                v-for="groupedOption in option.options"
+                :key="groupedOption.value"
+                :value="groupedOption.value"
+                :disabled="groupedOption.disabled"
               >
-                {{ opt.label }}
+                {{ groupedOption.label }}
               </SelectItem>
             </SelectGroup>
 
             <SelectItem
               v-else
               :value="option.value"
+              :disabled="option.disabled"
             >
               {{ option.label }}
             </SelectItem>
@@ -107,16 +121,8 @@ function isOptionGroup(option: Option | OptionGroup): option is OptionGroup {
         </SelectContent>
       </SelectRoot>
 
-      <FieldDescription
-        v-if="props.description"
-        :id="descriptionId"
-        :class="{ 'sr-only': props.srOnlyDescription }"
-      >
-        {{ props.description }}
-      </FieldDescription>
-
       <FieldError
-        v-if="errors.length"
+        v-if="errors.length > 0"
         :id="errorId"
         :errors="errors"
       />

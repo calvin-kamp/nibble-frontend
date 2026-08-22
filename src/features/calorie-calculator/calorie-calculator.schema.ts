@@ -12,21 +12,24 @@ export const calorieCalculatorSchema = toTypedSchema(
     sex: z.enum(['male', 'female']),
 
     age: z
-      .number()
-      .min(0, { message: 'Bitte gib dein Alter an.' })
+      .number({ message: 'Bitte gib dein Alter an.' })
+      .min(14, { message: 'Der Rechner gilt ab 14 Jahren.' })
       .max(120, { message: 'Prüf dein Alter noch mal.' }),
 
     height: z
-      .number()
-      .min(0, { message: 'Bitte gib deine Größe an.' })
+      .number({ message: 'Bitte gib deine Größe an.' })
+      .min(120, { message: 'Prüf deine Größe noch mal.' })
       .max(250, { message: 'Prüf deine Größe noch mal.' }),
 
     weight: z
-      .number()
-      .min(0, { message: 'Bitte gib dein Gewicht an.' })
+      .number({ message: 'Bitte gib dein Gewicht an.' })
+      .min(25, { message: 'Prüf dein Gewicht noch mal.' })
       .max(400, { message: 'Prüf dein Gewicht noch mal.' }),
 
-    steps: z.number().min(0).max(50000, { message: 'Höchstens 50.000 Schritte pro Tag.' }),
+    steps: z
+      .number({ message: 'Bitte gib deine Schritte an.' })
+      .min(0)
+      .max(50000, { message: 'Höchstens 50.000 Schritte pro Tag.' }),
 
     exercises: z.array(workoutSchema).default([]),
 

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
     class="bg-primary text-primary-foreground flex flex-col gap-4 rounded-2xl p-6 md:flex-row md:items-center md:justify-between md:p-8"
   >
     <div class="flex flex-col gap-1 md:max-w-[60ch]">
-      <h3 class="text-lg tracking-tight">Behalt die Zahl im Blick</h3>
+      <h3 class="text-lg leading-snug">Behalt die Zahl im Blick</h3>
 
       <p class="text-sm">
         Mit einem kostenlosen Account speicherst du dein Ziel, trackst Mahlzeiten und siehst jeden

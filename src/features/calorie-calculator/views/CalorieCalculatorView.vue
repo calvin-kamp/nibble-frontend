@@ -33,7 +33,7 @@ async function onEdit(): Promise<void> {
 
 <template>
   <div class="flex flex-col gap-4">
-    <h1 class="tracking-tighter">Kalorienrechner</h1>
+    <h1>Kalorienrechner</h1>
 
     <p
       v-if="!result"

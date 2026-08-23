@@ -21,7 +21,7 @@ function macroColor(name: string): string | undefined {
 <template>
   <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-1">
-      <h3 class="text-center text-base font-bold">Deine Makro-Verteilung</h3>
+      <h3 class="text-center text-base leading-snug font-bold">Deine Makro-Verteilung</h3>
 
       <p class="text-muted-foreground text-center text-sm">
         Ein Vorschlag, wie sich die {{ wholeNumber.format(props.targetCalories) }} kcal aufteilen

@@ -8,8 +8,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --breakpoint-lg: 80rem;
-
   --font-sans: 'Inter', sans-serif;
   --font-heading: var(--font-sans);
 
@@ -36,6 +34,8 @@
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
+  --color-primary-subtle-foreground: var(--primary-subtle-foreground);
+  --color-primary-subtle: var(--primary-subtle);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
@@ -68,6 +68,8 @@
   --popover-foreground: oklch(0.141 0.005 285.823);
   --primary: oklch(0.527 0.154 150.069);
   --primary-foreground: oklch(0.982 0.018 155.826);
+  --primary-subtle: oklch(0.945 0.035 150.069);
+  --primary-subtle-foreground: oklch(0.41 0.115 150.069);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.967 0.001 286.375);
@@ -103,6 +105,8 @@
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.5 0.119 151.328);
   --primary-foreground: oklch(0.982 0.018 155.826);
+  --primary-subtle: oklch(0.285 0.045 151.328);
+  --primary-subtle-foreground: oklch(0.88 0.115 151.328);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);
@@ -146,7 +150,7 @@
   }
   h3 {
     @apply text-xl font-semibold leading-normal;
-    @apply lg:text-2xl md:tracking-tight;
+    @apply xl:text-2xl md:tracking-tight;
   }
   button:not(:disabled),
   [role='button']:not(:disabled) {

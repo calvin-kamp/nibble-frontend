@@ -7,7 +7,7 @@ import LucideIcon from '@/components/shared/LucideIcon.vue'
 import InlineNotice from '@/components/shared/InlineNotice.vue'
 import CalorieBreakdown from './CalorieBreakdown.vue'
 import MacroSummary from './MacroSummary.vue'
-import ResultCTA from './ResultCTA.vue'
+import ResultCta from './ResultCta.vue'
 import { goals } from '../calorie-calculator.data'
 import { MIN_INTAKE } from '../calorie-calculator.constants'
 import type { CalorieCalculatorValues, CalorieResult } from '../calorie-calculator.types'
@@ -191,7 +191,7 @@ const notices = computed<ResultNotice[]>(() => {
       </CardContent>
     </Card>
 
-    <ResultCTA />
+    <ResultCta />
 
     <div class="flex justify-center">
       <Button

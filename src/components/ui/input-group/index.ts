@@ -30,14 +30,17 @@ export const inputGroupAddonVariants = cva(
 export type InputGroupVariants = VariantProps<typeof inputGroupAddonVariants>
 
 export const inputGroupButtonVariants = cva(
-  'gap-2 rounded-4xl text-sm flex items-center shadow-none',
+  [
+    'relative flex items-center rounded-4xl text-sm shadow-none',
+    'after:absolute after:content-[""]',
+  ],
   {
     variants: {
       size: {
-        'xs': 'h-6 gap-1 px-1.5 [&>svg:not([class*=size-])]:size-3.5',
-        'sm': '',
-        'icon-xs': 'size-6 p-0 has-[>svg]:p-0',
-        'icon-sm': 'size-8 p-0 has-[>svg]:p-0',
+        'xs': 'size-6 gap-1 p-1.5 [&>svg:not([class*=size-])]:size-3.5 after:-inset-2.5',
+        'sm': 'size-8 gap-1.5 p-2.5 [&>svg:not([class*=size-])]:size-4 after:-inset-x-1 after:-inset-y-1.5',
+        'icon-xs': 'size-6 gap-0 p-0 has-[>svg]:p-0 [&>svg:not([class*=size-])]:size-3.5 after:-inset-2.5',
+        'icon-sm': 'size-8 gap-0 p-0 has-[>svg]:p-0 [&>svg:not([class*=size-])]:size-4 after:-inset-1.5',
       },
     },
     defaultVariants: {

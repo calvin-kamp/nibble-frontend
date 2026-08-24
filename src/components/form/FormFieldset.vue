@@ -4,12 +4,14 @@ import { FieldDescription, FieldLegend, FieldSet } from '../ui/field'
 
 interface Props {
   label: string
+  srOnlyLabel?: boolean
   labelVariant?: 'legend' | 'label'
   description?: string
   srOnlyDescription?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  srOnlyLabel: false,
   labelVariant: 'legend',
   description: undefined,
   srOnlyDescription: false,
@@ -29,7 +31,10 @@ const describedBy = computed<string | undefined>(() =>
 
 <template>
   <FieldSet :aria-describedby="describedBy">
-    <FieldLegend :variant="props.labelVariant">
+    <FieldLegend
+      :variant="props.labelVariant"
+      :class="{ 'sr-only': props.srOnlyLabel }"
+    >
       {{ props.label }}
     </FieldLegend>
 

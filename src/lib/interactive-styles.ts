@@ -85,3 +85,34 @@ export const focusRingCard =
  */
 export const focusRingResetOffset =
   'focus-visible:ring-0 focus-visible:ring-offset-0 aria-invalid:ring-0'
+
+/**
+ * Offset focus ring for card-shaped links (recipe card, meal card).
+ * The whole card is the hit area, but only the title is the link — the
+ * ring therefore belongs on the card, not on the two-line title text,
+ * where a ring would be torn apart across the line break. The link
+ * itself gives up its outline via `focusRingResetLink`.
+ *
+ * Unlike `focusRingCard` this does not touch `border-*`: Card draws its
+ * hairline with `ring-1 ring-foreground/10`, so the focus utilities
+ * override that ring instead of an unused border.
+ */
+export const focusRingCardLink =
+  'outline-hidden has-[[data-slot=card-link]:focus-visible]:ring-ring/50 has-[[data-slot=card-link]:focus-visible]:ring-3 has-[[data-slot=card-link]:focus-visible]:ring-offset-2 has-[[data-slot=card-link]:focus-visible]:ring-offset-background'
+
+/**
+ * Counterpart to `focusRingCardLink`: the card shows the focus state,
+ * the link inside does not. `outline-hidden` rather than `outline-none`
+ * keeps the system outline in forced-colours mode.
+ */
+export const focusRingResetLink = 'outline-hidden'
+
+/**
+ * Hover and active state for card-shaped links, on top of
+ * `focusRingCardLink`. Both are gated on the presence of a
+ * `data-slot="card-link"` descendant, so cards without a link stay
+ * static. `ring-*` rather than `border-*` because Card draws its
+ * hairline with `ring-1`. Tailwind wraps `hover:` in
+ * `@media (hover: hover)`, so touch devices are unaffected.
+ */
+export const interactiveCardLink = `${focusRingCardLink} has-[[data-slot=card-link]]:hover:ring-ring has-[[data-slot=card-link]]:hover:-translate-y-0.5 has-[[data-slot=card-link]]:active:translate-y-0`
